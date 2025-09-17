@@ -1,101 +1,47 @@
-
-<!-- CREATE DATABASE sistema_login;
-
-USE viajandopelasmitologias;
-
-CREATE TABLE usuarios (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL
-);
-
--- Criar um usuário exemplo (senha: 123456)
-INSERT INTO usuarios (nome, email, senha) 
-VALUES ('Admin', 'admin@email.com', MD5('123456')); -->
-
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viajando pelas Mitologias</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #fdf7ec;
-            font-family: 'Georgia', serif;
-        }
-        .navbar {
-            background-color: #0a1a4f;
-        }
-        .navbar a {
-            color: white !important;
-            font-weight: 500;
-            margin: 0 10px;
-        }
-        .navbar a:hover {
-            color: #4d63aa;
-        }
-        .title {
-            text-align: center;
-            font-weight: bold;
-            margin: 30px 0;
-            color: #0a1a4f;
-        }
-        .myth-card img {
-            width: 250px;
-            margin-bottom: 15px;
-        }
-        .btn-access {
-            background-color: #0a1a4f;
-            border-radius: 20px;
-            padding: 5px 20px;
-            color: white;
-        }
-    </style>
+    <title>Viajando pelas mitologias</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">
-                <img src="foto_nordica.png" alt="Logo" width="50">
-            </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">MITOLOGIAS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="flashcards.php">TESTAR CONHECIMENTO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">SOBRE</a></li>
-                </ul>
-            </div>
+    <header class="navbar">
+        <div class="logo">
+            <img src="Logo.png" alt="Logo do site">
         </div>
-    </nav>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <span>|</span>
+            <a href="flashcards.php">Mitologias</a>
+            <span>|</span>
+            <a href="#">Testar Conhecimento</a>
+            <span>|</span>
+            <a href="">Sobre</a>
+        </nav>
+    </header>
+    <main class="container">
+        <h1>Bem-vindo ao Viajando pelas Mitologias!</h1>
 
-    <!-- Título -->
-    <h3 class="title">BEM-VINDO AO VIAJANDO PELAS MITOLOGIAS</h3>
-
-    <!-- Cards -->
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-md-3 myth-card">
-                <img src="foto_nordica.jpg" alt="Mitologia Grega">
-                <h5>MITOLOGIA GREGA</h5>
-                <button class="btn btn-access">Acessar</button>
+        <section class="cards">
+            <div class="card">
+                <p>Mitologia Grega</p>
+                <img src="grega.png" alt="Mitologia Grega">
+                <a href="login.php"><button>Acessar</button></a>
             </div>
-            <div class="col-md-3 myth-card">
-                <img src="" alt="Mitologia Nórdica">
-                <h5>MITOLOGIA NÓRDICA</h5>
-                <button class="btn btn-access">Acessar</button>
+            <div class="card">
+                <p>Mitologia Nórdica</p>
+                <img src="nordica.png" alt="Mitologia Nórdica">
+                <a href="login.php"><button>Acessar</button></a>
             </div>
-            <div class="col-md-3 myth-card">
-                <img src="" alt="Mitologia Chinesa">
-                <h5>MITOLOGIA CHINESA</h5>
-                <button class="btn btn-access">Acessar</button>
+            <div class="card">
+                <p>Mitologia Chinesa</p>
+                <img src="chinesa.png" alt="Mitologia Chinesa">
+                <a href="login.php"><button>Acessar</button></a>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>

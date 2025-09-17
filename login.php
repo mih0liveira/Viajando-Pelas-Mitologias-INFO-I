@@ -58,7 +58,7 @@ if (isset($_POST["login"])) {
 
         if (password_verify($senha, $usuario["senha"])) {
             $_SESSION["usuario"] = $usuario["nome"];
-            header("Location: login.php");
+            header("Location: index.html");
             exit;
         } else {
             $mensagem = "<div class='alert alert-danger'>Senha incorreta!</div>";
@@ -73,9 +73,25 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="UTF-8">
     <title>Login & Cadastro</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login.css">
 </head>
-<body class="bg-light">
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo do site">
+        </div>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <span>|</span>
+            <a href="mitologia.html">Mitologias</a>
+            <span>|</span>
+            <a href="#">Testar Conhecimento</a>
+            <span>|</span>
+            <a href="#">Sobre</a>
+        </nav>
+    </header>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
