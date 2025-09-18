@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cinzel Decorative", serif;
+    background-color: #f8f1df;
+    color: #001f54;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.navbar {
+    background-color: #001f54;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 40px;
+    position: relative;
+    height: 120px;
+}
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* truque para centralizar */
+    display: flex;
+    gap: 100px;
+}
+
+.logo img {
+    height: 100px;
+    margin: -15px;
+    transition: transform 0.3s;
+}
+.logo img:hover {
+    transform: scale(1.05); /* aumenta 5% ao passar o mouse */
+}
+
+
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    white-space: nowrap;
+}
+
+.menu a:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.menu span {
+    color: white;
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+
+/* Conteúdo */
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+
+/* Cards */
+
+.card {
+    text-align: center;
+    align-items: center;
+    width: 400px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card h3 {
+    font-family: "Cinzel Decorative", serif;
+}
+
+.card img:hover {
+    transform: scale(1.05); /* aumenta 5% ao passar o mouse */
+}
+
+.card button {
+    background-color: #002c77;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background-color: #0044aa;
+    transform: scale(1.1);
+}
