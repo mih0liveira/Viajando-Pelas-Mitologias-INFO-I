@@ -1,0 +1,143 @@
+<?php
+// sobre.php
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Viajando pelas Mitologias</title>
+
+    <!-- Fonte estilo manuscrito antiga (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Mate+SC&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'IM Fell English SC', serif;
+            background-color: #f4ecd8;
+            color: #4b2e14; /* marrom antigo */
+        }
+
+        header {
+            background-color: #0d1b3d;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header img {
+            width: 70px;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+
+        nav {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d4d3ce;
+        }
+
+        /* Container com imagem de papiro */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 60px 40px;
+            background: url('https://i.pinimg.com/474x/12/a4/7f/12a47fc2b51b048e1263d2adb3e72ed2.jpg') center center / cover no-repeat;
+            border: 4px solid #b68b4c;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            color: #3b2a1a; /* marrom escuro tipo tinta */
+            text-align: justify;
+            line-height: 1.9;
+            font-size: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #3b2a1a;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0d1b3d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo do site">
+        <nav>
+            <a href="index.php">Home</a> |
+            <a href="mitologias.php">Mitologias</a> |
+            <a href="quiz.php">Testar Conhecimento</a> |
+            <a href="sobre.php">Sobre</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Sobre o Viajando pelas Mitologias</h1>
+        <p>
+            O <strong>Viajando pelas Mitologias</strong> foi desenvolvido com o propósito de aproximar as pessoas do universo fascinante das diferentes culturas ao redor do mundo. 
+            Nosso objetivo é tornar o aprendizado mais interativo e acessível, permitindo que estudantes, professores e apaixonados pelo tema mergulhem nas histórias e símbolos que moldaram civilizações.
+        </p>
+        
+        <h2>Como foi desenvolvido</h2>
+        <p>
+            O site foi criado como parte de um projeto educacional utilizando tecnologias como <strong>HTML, CSS, PHP</strong> e banco de dados. 
+            Sua interface foi planejada para ser intuitiva, responsiva e agradável, mantendo uma paleta de cores inspirada na antiguidade e nos elementos culturais que representam as mitologias.
+        </p>
+
+        <h2>Nosso propósito</h2>
+        <p>
+            Acreditamos que conhecer mitologias é também conhecer a humanidade: seus medos, crenças, valores e formas de compreender o mundo. 
+            Por isso, oferecemos conteúdos informativos, quizzes e atividades interativas para que cada usuário possa aprender de maneira divertida e envolvente.
+        </p>
+
+        <h2>Como este site pode ajudar</h2>
+        <p>
+            Além de ampliar o conhecimento cultural, o site contribui para o <strong>desenvolvimento educacional</strong>, promovendo o pensamento crítico, a valorização da diversidade cultural 
+            e o estímulo à curiosidade intelectual. Assim, esperamos ajudar professores em sala de aula, estudantes em suas pesquisas e qualquer pessoa interessada em explorar os mitos que atravessaram os séculos.
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> Viajando pelas Mitologias</p>
+    </footer>
+
+</body>
+</html>
