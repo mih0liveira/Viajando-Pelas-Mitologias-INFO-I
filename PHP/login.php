@@ -1,20 +1,4 @@
 
-<!-- CREATE DATABASE sistema_login;
-
-USE viajandopelasmitologias;
-
-CREATE TABLE usuarios (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL
-);
-
--- Criar um usuário exemplo (senha: 123456)
-INSERT INTO usuarios (nome, email, senha) 
-VALUES ('Admin', 'admin@email.com', MD5('123456')); -->
-
-
 <?php
 session_start();
 $conn = new mysqli("localhost", "root", "", "viajandopelasmitologias");
@@ -27,27 +11,36 @@ $mensagem = "";
 
 // Cadastro
 if (isset($_POST["cadastrar"])) {
-    $nome = $_POST["nome"];
+    $nome  = $_POST["nome"];
     $email = $_POST["email"];
     $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+    // Se não veio nada do form, define como 2 (usuário comum)
+    $idTipoUsuario = isset($_POST["idTipoUsuario"]) ? intval($_POST["idTipoUsuario"]) : 2;
+
+    $sql = "INSERT INTO Usuario (nome, email, senha, idTipoUsuario) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $nome, $email, $senha);
+
+    if ($stmt === false) {
+        die("Erro ao preparar SQL: " . $conn->error);
+    }
+
+    $stmt->bind_param("sssi", $nome, $email, $senha, $idTipoUsuario);
 
     if ($stmt->execute()) {
         $mensagem = "<div class='alert alert-success'>Usuário cadastrado com sucesso! Faça login.</div>";
     } else {
-        $mensagem = "<div class='alert alert-danger'>Erro: " . $conn->error . "</div>";
+        $mensagem = "<div class='alert alert-danger'>Erro ao cadastrar: " . $stmt->error . "</div>";
     }
 }
+
 
 // Login
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
-    $sql = "SELECT * FROM usuarios WHERE email = ?";
+    $sql = "SELECT * FROM usuario WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -87,7 +80,7 @@ if (isset($_POST["login"])) {
             <span>|</span>
             <a href="login.php">Mitologias</a>
             <span>|</span>
-            <a href="login.php">Testar Conhecimento</a>
+            <a href="flashcard.php">Testar Conhecimento</a>
             <span>|</span>
             <a href="login.php">Sobre</a>
         </nav>
@@ -145,6 +138,7 @@ if (isset($_POST["login"])) {
         </div>
     </div>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
