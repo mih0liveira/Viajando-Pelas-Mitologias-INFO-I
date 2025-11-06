@@ -69,9 +69,12 @@ body {
   }
   
   .custom-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+      width: 100%;
+      height: 200px; /* você pode ajustar o valor */
+      object-fit: cover; /* mantém o preenchimento sem distorcer */
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+  
   }
   
   .card-content {
