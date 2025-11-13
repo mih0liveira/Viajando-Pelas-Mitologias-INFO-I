@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cinzel Decorative", serif;
+    background-color: #f8f1df;
+    color: #001f54;
+}
+
+.navbar {
+    background-color: #001f54;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 40px;
+    position: relative;
+    height: 120px;
+}
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* truque para centralizar */
+    display: flex;
+    gap: 100px;
+}
+
+.logo img {
+    height: 100px;
+    margin: -15px;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+.logo img:hover {
+    transform: scale(1.05); /* aumenta 5% ao passar o mouse */
+}
+
+
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    white-space: nowrap;
+}
+
+.menu span {
+    color: white;
+    font-size: 40px;
+    margin-top: -10px;
+}
+
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: #fffaf0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+.topo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background-color: #f2e8cf;
+    border-bottom: 4px solid #001f54;
+}
+
+.topo .imagem img {
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.titulo {
+    flex: 1;
+}
+
+.titulo h1 {
+    font-size: 48px;
+    color: #001f54;
+    margin-bottom: 10px;
+}
+
+.titulo h2 {
+    font-size: 22px;
+    color: #003366;
+    font-weight: 400;
+}
+
+/* ===== TEXTO ===== */
+.conteudo {
+    padding: 30px 50px;
+    color: #002147;
+    line-height: 1.8;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.conteudo p {
+    margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) {
+    .topo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .topo .imagem img {
+        width: 90%;
+    }
+
+    .titulo h1 {
+        font-size: 36px;
+    }
+
+    .conteudo {
+        padding: 20px;
+        font-size: 16px;
+    }
+}
