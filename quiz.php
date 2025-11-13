@@ -1,160 +1,80 @@
 <?php
-header("Content-Type: text/html; charset=UTF-8");
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "viajandopelasmitologias";
+include('conexao.php');
 
-// Conexão
- $conn = new mysqli($host, $user, $pass, $db);
- if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
- }
- $conn->set_charset("utf8mb4");
-
-// Inicializa sessão para contar acertos
-session_start();
-if(!isset($_SESSION['acertos'])) {
-    $_SESSION['acertos'] = 0;
+if (!isset($_GET['mitologia'])) {
+    die("Nenhuma mitologia selecionada.");
 }
 
-// Define a pergunta atual
-$pergunta_id = isset($_GET['pergunta_id']) ? (int)$_GET['pergunta_id'] : 1;
+$mitologia = $_GET['mitologia'];
 
-// Pega a pergunta
-$sql = "SELECT * FROM perguntas WHERE id = $pergunta_id";
-$result = $conn->query($sql);
+// Consulta as perguntas da mitologia
+$query = "SELECT * FROM quiz_perguntas WHERE mitologia = ?";
 
-// Verifica se acabou o quiz
-$sql_total = "SELECT COUNT(*) as total FROM perguntas";
-$res_total = $conn->query($sql_total);
-$row_total = $res_total->fetch_assoc();
-$total_perguntas = $row_total['total'];
-
-if($result->num_rows == 0){
-    $acertos = $_SESSION['acertos'];
-    session_destroy();
-    header("Location: resultados.php?acertos=$acertos&total=$total_perguntas");
-    exit;
+$stmt = $conn->prepare($query);
+if (!$stmt) {
+    die("Erro ao preparar a consulta: " . $conn->error);
 }
 
-$pergunta = $result->fetch_assoc();
+$stmt->bind_param("s", $mitologia);
+$stmt->execute();
 
-// Pega as respostas
-$sql2 = "SELECT * FROM respostas WHERE pergunta_id = $pergunta_id ORDER BY RAND()";
-$respostas = $conn->query($sql2);
+$result = $stmt->get_result();
 
-// Verifica se o usuário respondeu
-if(isset($_POST['resposta_id'])){
-    $resposta_id = (int)$_POST['resposta_id'];
-    $sqlCheck = "SELECT correta FROM respostas WHERE id = $resposta_id";
-    $resCheck = $conn->query($sqlCheck);
-    $row = $resCheck->fetch_assoc();
-    $msg = $row['correta'] == 1 ? "" : "";
-
-    if($row['correta'] == 1){
-        $_SESSION['acertos']++;
-    }
-
-    $next_id = $pergunta_id + 1;
-    header("Location: ?pergunta_id=$next_id&msg=$msg");
-    exit;
+if (!$result) {
+    die("Erro ao executar a consulta: " . $stmt->error);
 }
 
-$msg = isset($_GET['msg']) ? $_GET['msg'] : "";
+$perguntas = [];
+while ($row = $result->fetch_assoc()) {
+    $perguntas[] = $row;
+}
+
+$stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Quiz Mitológico</title>
+<title>Quiz - <?php echo ucfirst($mitologia); ?></title>
 <link rel="stylesheet" href="quiz.css">
-<style>
-.quiz-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 120px;
-}
-
-.quiz-card {
-    background-color: white;
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-
-.quiz-card h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.quiz-card form label {
-    display: block;
-    margin: 15px 0;
-    font-size: 20px;
-}
-
-.quiz-card button {
-    background-color: #002c77;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 20px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.quiz-card button:hover {
-    background-color: #0044aa;
-    transform: scale(1.05);
-}
-
-</style>
 </head>
 <body>
-    <!-- Barra de navegação -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="index.php"><img src="logo.png" alt="Logo"></a>
-        </div>
-        <div class="menu">
-            <a href="index.html">HOME</a>
-            <span>|</span>
-            <a href="#">MITOLOGIAS</a>
-            <span>|</span>
-            <a href="quiz.php">TESTAR CONHECIMENTO</a>
-            <span>|</span>
-            <a href="sobre.html">SOBRE</a>
-            
-        </div>
-    </nav>
-
-    <!-- Conteúdo Quiz -->
-    <div class="quiz-container">
-        <div class="quiz-card">
-            <h2>Quiz Mitológico</h2>
-            <?php if($msg): ?>
-                <div class="msg"><?php echo $msg; ?></div>
-            <?php endif; ?>
-            <p><?php echo $pergunta['pergunta']; ?></p>
-            <form method="POST">
-                <?php while($r = $respostas->fetch_assoc()): ?>
-                    <label>
-                        <input type="radio" name="resposta_id" value="<?php echo $r['id']; ?>" required>
-                        <?php echo $r['resposta']; ?>
-                    </label>
-                <?php endwhile; ?>
-                <button type="submit">
-                    <?php echo ($pergunta_id == $total_perguntas) ? "Finalizar" : "Enviar"; ?>
-                </button>
-            </form>
-        </div>
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.php"><img src="logo.png" alt="Logo"></a>
     </div>
+    <div class="menu">
+        <a href="index.html">HOME</a>
+        <span>|</span>
+        <a href="escolher_mitologia.php">MITOLOGIAS</a>
+        <span>|</span>
+        <a href="testar_conhecimento.php">TESTAR CONHECIMENTO</a>
+        <span>|</span>
+        <a href="sobre.html">SOBRE</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Quiz - Mitologia <?php echo ucfirst($mitologia); ?></h1>
+
+    <?php if (count($perguntas) > 0): ?>
+        <form method="POST" action="resultado.php">
+            <?php foreach ($perguntas as $index => $p): ?>
+                <div class="pergunta">
+                    <h2><?php echo ($index + 1) . ". " . htmlspecialchars($p['pergunta']); ?></h2>
+                    <label><input type="radio" name="resposta_<?php echo $p['id']; ?>" value="a" required> <?php echo htmlspecialchars($p['opcao_a']); ?></label><br>
+                    <label><input type="radio" name="resposta_<?php echo $p['id']; ?>" value="b"> <?php echo htmlspecialchars($p['opcao_b']); ?></label><br>
+                    <label><input type="radio" name="resposta_<?php echo $p['id']; ?>" value="c"> <?php echo htmlspecialchars($p['opcao_c']); ?></label><br>
+                    <label><input type="radio" name="resposta_<?php echo $p['id']; ?>" value="d"> <?php echo htmlspecialchars($p['opcao_d']); ?></label><br>
+                    <input type="hidden" name="correta_<?php echo $p['id']; ?>" value="<?php echo $p['correta']; ?>">
+                    <hr>
+                </div>
+            <?php endforeach; ?>
+            <button type="submit" class="btn">Enviar Respostas</button>
+        </form>
+    <?php else: ?>
+        <p style="font-size:20px;">Ainda não há perguntas cadastradas para esta mitologia.</p>
+    <?php endif; ?>
+</div>
 </body>
 </html>
