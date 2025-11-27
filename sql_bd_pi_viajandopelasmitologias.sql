@@ -11,10 +11,10 @@ CREATE TABLE Usuario (
 );
 
 -- Criando tabela Quiz
-CREATE TABLE Quiz (
-    idQuiz INT PRIMARY KEY AUTO_INCREMENT,
-    quiz VARCHAR(45) NOT NULL
-);
+-- CREATE TABLE Quiz (
+--     idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+--     quiz VARCHAR(45) NOT NULL
+-- );
 
 -- Criando tabela TipoMitologia
 CREATE TABLE TipoMitologia (
@@ -22,13 +22,13 @@ CREATE TABLE TipoMitologia (
     tipoMitologia VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE Conteudo (
-    idConteudo INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(45) NOT NULL,
-    resumo VARCHAR(500) NOT NULL,
-    imagem mediumblob,
-    texto VARCHAR(10000) NOT NULL
-);
+-- CREATE TABLE Conteudo (
+--     idConteudo INT PRIMARY KEY AUTO_INCREMENT,
+--     titulo VARCHAR(45) NOT NULL,
+--     resumo VARCHAR(500) NOT NULL,
+--     imagem mediumblob,
+--     texto VARCHAR(10000) NOT NULL
+-- );
 
 -- Criando tabela Questoes
 CREATE TABLE Questoes (
@@ -50,23 +50,23 @@ CREATE TABLE Questoes (
 -- Criando tabela Rodada (tabela de relacionamento Perguntas x Quiz)
 CREATE TABLE Rodada (
     idQuestoes INT NOT NULL,
-    idQuiz INT NOT NULL,
-    PRIMARY KEY (idQuestoes, idQuiz),
+    idTipoMitologia INT NOT NULL,
+    PRIMARY KEY (idQuestoes, idTipoMitologia),
     FOREIGN KEY (idQuestoes) REFERENCES Questoes(idQuestoes),
-    FOREIGN KEY (idQuiz) REFERENCES Quiz(idQuiz)
+    FOREIGN KEY (idTipoMitologia) REFERENCES TipoMitologia(idTipoMitologia)
 );
 
 -- Criando tabela Placar
-CREATE TABLE Placar (
-    idPlacar INT PRIMARY KEY AUTO_INCREMENT,
-    respostaUsuario VARCHAR(200) NOT NULL,
-    idRodada_idQuestoes INT NOT NULL,
-    idQuiz INT NOT NULL,
-    idUsuario INT NOT NULL,
-    FOREIGN KEY (idRodada_idQuestoes) REFERENCES Questoes(idQuestoes),
-    FOREIGN KEY (idQuiz) REFERENCES Quiz(idQuiz),
-    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
-);
+-- CREATE TABLE Placar (
+--     idPlacar INT PRIMARY KEY AUTO_INCREMENT,
+--     respostaUsuario VARCHAR(200) NOT NULL,
+--     idRodada_idQuestoes INT NOT NULL,
+--     idQuiz INT NOT NULL,
+--     idUsuario INT NOT NULL,
+--     FOREIGN KEY (idRodada_idQuestoes) REFERENCES Questoes(idQuestoes),
+--     FOREIGN KEY (idQuiz) REFERENCES Quiz(idQuiz),
+--     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
+-- );
 
 
 
@@ -118,67 +118,67 @@ INSERT INTO TipoMitologia (tipoMitologia) VALUES
 INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, correta, idTipoMitologia) VALUES
 -- Grega
 ('Zeus era o rei dos deuses do Olimpo e dominava os fenômenos atmosféricos.', 'Qual era o domínio de Zeus?', NULL,
-'Guerra', 'Relâmpagos e céu', 'Mares', 'Florestas', 'B', 1),
+'Guerra', 'Relâmpagos e céu', 'Mares', 'Florestas', 'Relâmpagos e céu', 1),
 
 ('Afrodite era vista como a deusa da beleza e das emoções amorosas.', 'Do que Afrodite é deusa?', NULL,
-'Caça', 'Sabedoria', 'Amor e beleza', 'Profecia', 'C', 1),
+'Caça', 'Sabedoria', 'Amor e beleza', 'Profecia', 'Amor e beleza', 1),
 
 ('Hades governava uma região destinada aos mortos.', 'Qual era o domínio de Hades?', NULL,
-'Olimpo', 'Submundo', 'Mares', 'Montanhas', 'B', 1),
+'Olimpo', 'Submundo', 'Mares', 'Montanhas', 'Submundo', 1),
 
 ('Ares era conhecido por sua ferocidade e impulsividade.', 'Ares era o deus de que?', NULL,
-'Música', 'Guerra', 'Colheitas', 'Artes', 'B', 1),
+'Música', 'Guerra', 'Colheitas', 'Artes', 'Guerra', 1),
 
 ('Atena nasceu da cabeça de Zeus e representava a razão e a estratégia.', 'Atena é deusa de:', NULL,
-'Amor', 'Sabedoria e estratégia', 'Fogo', 'Tempestades', 'B', 1),
+'Amor', 'Sabedoria e estratégia', 'Fogo', 'Tempestades', 'Sabedoria e estratégia', 1),
 
 ('Hércules se destacou por realizar tarefas impossíveis.', 'Como ficaram conhecidos seus feitos?', NULL,
-'Trabalhos de Hércules', 'Testes do Olimpo', 'Desafios de Zeus', 'Doze provas', 'A', 1),
+'Trabalhos de Hércules', 'Testes do Olimpo', 'Desafios de Zeus', 'Doze provas', 'Trabalhos de Hércules', 1),
 
 ('Poseidon segurava um tridente e controlava mares e tempestades.', 'Poseidon era o deus de:', NULL,
-'Mares', 'Agricultura', 'Caça', 'Música', 'A', 1),
+'Mares', 'Agricultura', 'Caça', 'Música', 'Mares', 1),
 
 ('Apolo possuía vários domínios, sendo um deles a arte musical.', 'Além da música, Apolo também era deus de:', NULL,
-'Profecias', 'Guerra', 'Sonhos', 'Caça', 'A', 1),
+'Profecias', 'Guerra', 'Sonhos', 'Caça', 'Profecias', 1),
 
 ('Artemis, irmã de Apolo, protegia os animais e as florestas.', 'Artemis era deusa de:', NULL,
-'Amor', 'Caça', 'Mar', 'Fogo', 'B', 1),
+'Amor', 'Caça', 'Mar', 'Fogo', 'Caça', 1),
 
 ('Hermes era veloz e auxiliava os deuses nas comunicações.', 'Qual era a função principal de Hermes?', NULL,
-'Criar ventos', 'Mensageiro dos deuses', 'Curar doenças', 'Proteger navegadores', 'B', 1);
+'Criar ventos', 'Mensageiro dos deuses', 'Curar doenças', 'Proteger navegadores', 'Mensageiro dos deuses', 1);
 
 
 
 -- Nordica
 ('Odin era o deus supremo da mitologia nórdica, associado à sabedoria e à guerra.', 'O que Odin representa?', NULL,
-'Sabedoria e guerra', 'Mares', 'Sol', 'Fertilidade', 'A', 2),
+'Sabedoria e guerra', 'Mares', 'Sol', 'Fertilidade', 'Sabedoria e guerra', 2),
 
 ('Thor era conhecido por seu martelo mágico, Mjölnir.', 'Thor era o deus de:', NULL,
-'Tempestades e trovões', 'Amor', 'Colheitas', 'Escuridão', 'A', 2),
+'Escuridão', 'Amor', 'Colheitas', 'Tempestades e trovões', 'Tempestades e trovões', 2),
 
 ('Loki era um deus trapaceiro, habilidoso em causar confusão.', 'Loki é conhecido como:', NULL,
-'Senhor da luz', 'Deus trapaceiro', 'Protetor dos reis', 'Guardião dos mares', 'B', 2),
+'Senhor da luz', 'Deus trapaceiro', 'Protetor dos reis', 'Guardião dos mares', 'Deus trapaceiro', 2),
 
 ('Valhalla era um salão majestoso administrado por Odin.', 'Quem se juntava a Odin em Valhalla?', NULL,
-'Ferreiros', 'Guerreiros mortos em batalha', 'Pescadores', 'Magos', 'B', 2),
+'Ferreiros', 'Pescadores', 'Guerreiros mortos em batalha', 'Magos', 'Guerreiros mortos em batalha', 2),
 
 ('Freyja era associada ao amor e também à guerra.', 'Freyja é deusa de:', NULL,
-'Amor e guerra', 'Chuva', 'Sonhos', 'Montanhas', 'A', 2),
+'Amor e guerra', 'Chuva', 'Sonhos', 'Montanhas', 'Amor e guerra', 2),
 
 ('Fenrir era um lobo gigante que protagonizaria o Ragnarok.', 'Fenrir era:', NULL,
-'Um dragão', 'Um lobo gigante', 'Um gigante do gelo', 'Um elfo negro', 'B', 2),
+'Um dragão', 'Um elfo negro', 'Um gigante do gelo', 'Um lobo gigante', 'Um lobo gigante', 2),
 
 ('Yggdrasil sustentava os nove mundos da mitologia nórdica.', 'O que é Yggdrasil?', NULL,
-'Uma espada', 'A árvore do mundo', 'Um templo', 'Uma constelação', 'B', 2),
+'Uma espada', 'Uma constelação', 'Um templo', 'A árvore do mundo', 'A árvore do mundo', 2),
 
 ('Jörmungandr era uma serpente marinha que circundava o mundo.', 'Qual criatura era Jörmungandr?', NULL,
-'Dragão', 'Serpente gigante', 'Lobo', 'Gigante de fogo', 'B', 2),
+'Dragão', 'Serpente gigante', 'Lobo', 'Gigante de fogo', 'Serpente gigante', 2),
 
 ('Os berserkers eram guerreiros temidos.', 'O que caracterizava os berserkers?', NULL,
-'Combatiam em transe', 'Combatiam com música', 'Eram curandeiros', 'Não usavam armas', 'A', 2),
+'Combatiam em transe', 'Combatiam com música', 'Eram curandeiros', 'Não usavam armas', 'Combatiam em transe', 2),
 
 ('Hel governava o reino dos mortos não honrosos.', 'Hel era responsável por:', NULL,
-'Montanhas', 'Reino dos mortos', 'Ventos', 'Caça', 'B', 2);
+'Montanhas', 'Reino dos mortos', 'Ventos', 'Caça', 'Reino dos mortos', 2);
 
 
 
@@ -516,7 +516,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 
 
 -- Rodada (associando questões aos quizzes)
-INSERT INTO Rodada (idQuestoes, idQuiz) VALUES
+INSERT INTO Rodada (idQuestoes, idTipoMitologia) VALUES
 (1, 1), -- Questão 1 no Quiz de Mitologia Grega
 (2, 1),
 (3, 1),
