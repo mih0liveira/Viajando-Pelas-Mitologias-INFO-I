@@ -78,9 +78,18 @@ INSERT INTO Usuario (nome, email, senha, idTipoUsuario) VALUES
 -- Tipos de Mitologia
 INSERT INTO TipoMitologia (tipoMitologia) VALUES
 ('Grega'),
-('Romana'),
 ('Nórdica'),
-('Egípcia');
+('Egípcia'),
+('Chinesa'),
+('Japonesa'),
+('Hindu'),
+('Maia'),
+('Asteca'),
+('Celta'),
+('Mesopotâmica'),
+('Africana'),
+('Indígena');
+    
 
 -- Conteúdo
 INSERT INTO Conteudo (titulo, resumo, imagem, texto) VALUES
