@@ -278,7 +278,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Deus criador', 'Deus do caos', 'Guardião das sombras', 'Senhor das chuvas', 'Deus criador', 5),
 
 ('Izanami governou o mundo dos mortos.', 'Izanami passou a governar:', NULL,
-'Céu', 'Mares', 'Mundo dos mortos', 'Trovões', 'Mundo dos mortos', 5);
+'Céu', 'Mares', 'Mundo dos mortos', 'Trovões', 'Mundo dos mortos', 5),
 
 
 
@@ -311,7 +311,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Demônio', 'Avatar de Vishnu', 'Dragão', 'Rei dos mares', 'Avatar de Vishnu', 6),
 
 ('Krishna é um dos deuses hindus mais amados e protetores.', 'Krishna representa:', NULL,
-'Trapaça', 'Sabedoria e amor', 'Doenças', 'Medo', 'Sabedoria e amor', 6);
+'Trapaça', 'Sabedoria e amor', 'Doenças', 'Medo', 'Sabedoria e amor', 6),
 
 
 
@@ -344,7 +344,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Chaac', 'Ah Puch', 'Kukulkan', 'Itzamná', 'Chaac', 7),
 
 ('A bola era um esporte ritualístico importante.', 'O jogo de bola simbolizava:', NULL,
-'Diversão simples', 'Rituais espirituais', 'Treino militar', 'Economia', 'Rituais espirituais', 7);
+'Diversão simples', 'Rituais espirituais', 'Treino militar', 'Economia', 'Rituais espirituais', 7),
 
 
 
@@ -378,7 +378,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Lazer', 'Equilíbrio do cosmos', 'Dança', 'Colheitas', 'Equilíbrio do cosmos', 8),
 
 ('A águia representava poder e bravura.', 'O que a águia simbolizava?', NULL,
-'Preguiça', 'Bravura', 'Doença', 'Morte', 'Bravura', 8);
+'Preguiça', 'Bravura', 'Doença', 'Morte', 'Bravura', 8),
 
 
 
@@ -412,7 +412,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Morte', 'Vida', 'Doença', 'Guerra', 'Vida', 9),
 
 ('Os celtas acreditavam em outro mundo espiritual.', 'O Outro Mundo era:', NULL,
-'Um reino espiritual', 'Um deserto', 'Uma montanha', 'Um oceano', 'Um reino espiritual', 9);
+'Um reino espiritual', 'Um deserto', 'Uma montanha', 'Um oceano', 'Um reino espiritual', 9),
 
 
 -- Mesopotamica
@@ -444,7 +444,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Estrelas', 'Lua', 'Montanhas', 'Chuvas', 'Lua', 10),
 
 ('Os mesopotâmicos viam os deuses como controladores da natureza.', 'Qual era sua visão dos deuses?', NULL,
-'Não interferiam', 'Controlavam a natureza', 'Apenas observavam', 'Eram humanos', 'Controlavam a natureza', 10);
+'Não interferiam', 'Controlavam a natureza', 'Apenas observavam', 'Eram humanos', 'Controlavam a natureza', 10),
 
 
 
@@ -478,7 +478,7 @@ INSERT INTO Questoes (enunciado, pergunta, imagem, alternativaA, alternativaB, a
 'Deus da cura', 'Deus do mar', 'Deus da música', 'Deus do sol', 'Deus da cura', 11),
 
 ('Os orixás representam forças da natureza.', 'O que representam?', NULL,
-'Mundo tecnológico', 'Forças da natureza', 'Planetas', 'Ventos apenas', 'Forças da natureza', 11);
+'Mundo tecnológico', 'Forças da natureza', 'Planetas', 'Ventos apenas', 'Forças da natureza', 11),
 
 
 
@@ -672,6 +672,3 @@ SELECT * FROM Usuario;
 SELECT * FROM TipoMitologia;
 SELECT * FROM Questoes;
 SELECT * FROM Rodada;
-
-
-
