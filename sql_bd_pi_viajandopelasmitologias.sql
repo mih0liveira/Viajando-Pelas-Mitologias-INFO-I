@@ -669,11 +669,9 @@ INSERT INTO Rodada (idQuestoes, idTipoMitologia) VALUES
 -- ('Loki', 2, 2, 3);     -- Maria respondeu errado
 
 SELECT * FROM Usuario;
-SELECT * FROM Quiz;
 SELECT * FROM TipoMitologia;
-SELECT * FROM Conteudo;
 SELECT * FROM Questoes;
 SELECT * FROM Rodada;
-SELECT * FROM Placar;
+
 
 
