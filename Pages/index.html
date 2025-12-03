@@ -21,7 +21,7 @@
         <span>|</span>
         <a href="#">Testar Conhecimento</a>
         <span>|</span>
-        <a href="#">Sobre</a>
+        <a href="../Pages/sobre.html">Sobre</a>
     </nav>
 </header>
 
@@ -197,10 +197,16 @@
 
     </div>
 
+
     <!-- SETAS -->
     <div class="arrow left" onclick="prevSlide()">&#10094;</div>
     <div class="arrow right" onclick="nextSlide()">&#10095;</div>
-</div>
+</div> 
+<footer>
+        <p>&copy; Viajando pelas Mitologias</p>
+</footer>
+
+
 <script>
 let index = 0;
 const slides = document.querySelectorAll(".slide");
@@ -235,7 +241,7 @@ closeBtn.addEventListener("click", () => {
 
 // Botão "Fazer Login" pode redirecionar para a página de login
 loginBtn.addEventListener("click", () => {
-    window.location.href = "login.html"; // substitua pelo link real
+    window.location.href = "../Pages/login.php"; // substitua pelo link real
 });
 
 // Fecha modal se clicar fora do conteúdo
@@ -244,9 +250,5 @@ window.addEventListener("click", (e) => {
 });
 
 </script>
-
-
-    
-
 </body>
 </html>

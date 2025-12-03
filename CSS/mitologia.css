@@ -100,51 +100,59 @@ body {
     color: #555;
   }
   /* Modal */
+/* --- MODAL --- */
 .modal {
-    display: none; /* escondida por padrão */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: aparecer .3s ease;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .modal-content p {
-    font-size: 18px;
-    margin-bottom: 20px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .modal-buttons button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 #loginBtn {
-    background-color: #233e77;
-    color: white;
+   background-color: #233e77;
+  color: white;
 }
 
 #closeBtn {
-    background-color: #c8c69d;
-    color: rgb(238, 242, 232);
+  background-color: #c8c69d;
+  color: white;
 }
+
 
   /* ================= RESPONSIVIDADE ================= */
 
