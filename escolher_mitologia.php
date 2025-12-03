@@ -1,3 +1,7 @@
+<?php
+include "conexao.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,16 +30,16 @@
         <div class="cards">
 
             <?php
-            // Cada mitologia tem um ID igual ao usado no banco de dados (tabela "mitologias")
+            // IDs oficiais para o quiz.php
             $mitologias = [
-                [1, "Mitologia Grega", "imagens/grega.jpg"],
-                [2, "Mitologia Romana", "imagens/romana.jpg"],
-                [3, "Mitologia Egípcia", "imagens/egipcia.jpg"],
-                [4, "Mitologia Nórdica", "imagens/nordica.jpg"],
-                [5, "Mitologia Japonesa", "imagens/japonesa.jpg"],
-                [6, "Mitologia Chinesa", "imagens/chinesa.jpg"],
-                [7, "Mitologia Indígena", "imagens/indigena.jpg"],
-                [8, "Mitologia Africana", "imagens/africana.jpg"],
+              [1, "Mitologia Grega", "imagens/imggrega.png"],
+                [2, "Mitologia Romana", "imagens/romana.png"],
+                [3, "Mitologia Egípcia", "imagens/imgegipcia.png"],
+                [4, "Mitologia Nórdica", "imagens/imgnordica.png"],
+                [5, "Mitologia Japonesa", "imagens/japonesa.png"],
+                [6, "Mitologia Chinesa", "imagens/imgchinesa.png"],
+                [7, "Mitologia Indígena", "imagens/indigena.png"],
+                [8, "Mitologia Africana", "imagens/imgafricana.png"],
                 [9, "Mitologia Mesopotâmica", "imagens/mesopotamica.jpg"],
                 [10, "Mitologia Celta", "imagens/celta.jpg"],
                 [11, "Mitologia Hindu", "imagens/hindu.jpg"],
@@ -47,7 +51,11 @@
                 <div class='card'>
                     <p>{$m[1]}</p>
                     <img src='{$m[2]}' alt='{$m[1]}'>
-                    <button onclick=\"window.location.href='quiz.php?id_mitologia={$m[0]}'\">Iniciar Quiz</button>
+
+                    <!-- Corrigido: adicionando index=0 -->
+                    <button onclick=\"window.location.href='quiz.php?id_mitologia={$m[0]}&index=0'\">
+                        Iniciar Quiz
+                    </button>
                 </div>
                 ";
             }

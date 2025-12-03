@@ -1,9 +1,13 @@
+<?php
+include "conexao.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <title>Testar Conhecimento</title>
-<link rel="stylesheet" href="quiz.css"> <!-- usa o CSS padrão que você mandou -->
+<link rel="stylesheet" href="quiz.css">
 <style>
 .opcoes {
     display: flex;
@@ -53,7 +57,7 @@
         <div class="menu">
             <a href="index.html">HOME</a>
             <span>|</span>
-            <a href="#">MITOLOGIAS</a>
+            <a href="escolher_mitologia.php">MITOLOGIAS</a>
             <span>|</span>
             <a href="testar_conhecimento.php">TESTAR CONHECIMENTO</a>
             <span>|</span>

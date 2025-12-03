@@ -1,5 +1,6 @@
 <?php
-// mitologias.php (pode ser salvo como .html também)
+// Se você estiver usando conexão com banco, ative a linha abaixo:
+// include "conexao.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -7,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mitologias - Viajando pelas Mitologias</title>
+
+    <link rel="stylesheet" href="quiz.css">
     <style>
         body {
             margin: 0;
@@ -15,25 +18,21 @@
             background: linear-gradient(135deg, #f5f5f5, #fcfbf1);
             background-size: 400% 400%;
         }
-
         header {
             background-color: rgba(13,27,61,0.95);
             padding: 15px 0;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
-
         header img {
             width: 70px;
             vertical-align: middle;
             margin-right: 15px;
         }
-
         nav {
             display: inline-block;
             vertical-align: middle;
         }
-
         nav a {
             color: #ffffff;
             text-decoration: none;
@@ -42,55 +41,35 @@
             font-weight: bold;
             position: relative;
         }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            left: 0;
-            bottom: -5px;
-            background: #dbd4b5;
-            transition: 0.4s;
-        }
-
         nav a:hover::after {
             width: 100%;
         }
-
         .container {
             max-width: 1200px;
             margin: 50px auto;
             padding: 20px;
             text-align: center;
         }
-
         h1 {
             color: #1a1a40;
             margin-bottom: 20px;
             text-shadow: 0 0 8px #d4d4d4;
         }
-
         p {
             margin-bottom: 30px;
             font-size: 18px;
             color: #333;
         }
-
-        /* Carrossel */
         .carousel {
             position: relative;
             overflow: hidden;
-            width: 100%;
             max-width: 1000px;
             margin: auto;
         }
-
         .carousel-track {
             display: flex;
             transition: transform 1s ease-in-out;
         }
-
         .card {
             min-width: 300px;
             max-width: 300px;
@@ -100,28 +79,22 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: transform 0.5s;
         }
-
         .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-
         .card h2 {
             font-size: 20px;
             margin: 15px 0 10px;
             color: #ffd700;
         }
-
         .card p {
             padding: 0 15px 15px;
             font-size: 15px;
-            line-height: 1.6;
             color: #f0f0f0;
         }
-
         .btn {
             display: inline-block;
             background-color: #cfc69e;
@@ -133,149 +106,78 @@
             transition: 0.3s;
             font-weight: bold;
         }
-
         .btn:hover {
             background-color: #fff;
             color: #0d1b3d;
-            box-shadow: 0 0 15px #ffef96;
-        }
-
-        /* Botões do carrossel */
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(13,27,61,0.8);
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        .carousel-btn:hover {
-            background: #d3c670;
-            color: #0d1b3d;
-        }
-
-        .carousel-btn.prev {
-            left: 10px;
-        }
-
-        .carousel-btn.next {
-            right: 10px;
-        }
-
-        footer {
-            background-color: rgba(13,27,61,0.95);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="logo.png" alt="Logo do site">
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="mitologias.html">Mitologias</a> |
-            <a href="quiz.html">Testar Conhecimento</a> |
-            <a href="sobre.html">Sobre</a>
-        </nav>
-    </header>
+    <!-- MENU PADRÃO DO SISTEMA -->
+    <?php include "menu.php"; ?>
 
     <div class="container">
         <h1>Mitologias do Mundo</h1>
-        <p>Entre na viagem pelas culturas mais épicas da história humana ⚔️🐉.</p>
+        <p>Escolha qual mitologia você deseja usar para o quiz ⚔️🐉.</p>
 
         <div class="carousel">
             <div class="carousel-track">
-                <!-- Mitologia Grega -->
+
+                <!-- Cada card leva para um quiz específico -->
                 <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Athena_Greek_Goddess.jpg" alt="Mitologia Grega">
+                    <img src="img/grega.jpg" alt="">
                     <h2>Mitologia Grega</h2>
-                    <p>Deuses como Zeus, Atena e Hades formam um dos panteões mais famosos do mundo.</p>
-                    <a href="grega.html" class="btn">Acessar</a>
+                    <p>Zeus, Atena, Hades e heróis lendários.</p>
+                    <a href="quiz_grega.php" class="btn">Fazer Quiz</a>
                 </div>
 
-                <!-- Mitologia Nórdica -->
                 <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Odin.jpg" alt="Mitologia Nórdica">
+                    <img src="img/nordica.jpg" alt="">
                     <h2>Mitologia Nórdica</h2>
-                    <p>Odin, Thor e Loki protagonizam lendas sobre batalhas cósmicas e o Ragnarok.</p>
-                    <a href="nordica.html" class="btn">Acessar</a>
+                    <p>Thor, Odin, Loki e batalhas épicas.</p>
+                    <a href="quiz_nordica.php" class="btn">Fazer Quiz</a>
                 </div>
 
-                <!-- Mitologia Egípcia -->
                 <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Anubis_standing.svg" alt="Mitologia Egípcia">
+                    <img src="img/egipcia.jpg" alt="">
                     <h2>Mitologia Egípcia</h2>
-                    <p>Os deuses egípcios como Rá, Ísis e Anúbis explicavam a vida, a morte e o além.</p>
-                    <a href="egipcia.html" class="btn">Acessar</a>
+                    <p>Os deuses do Antigo Egito.</p>
+                    <a href="quiz_egipcia.php" class="btn">Fazer Quiz</a>
                 </div>
 
-                <!-- Mitologia Chinesa -->
                 <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Dragon_chinois.svg" alt="Mitologia Chinesa">
+                    <img src="img/chinesa.jpg" alt="">
                     <h2>Mitologia Chinesa</h2>
-                    <p>Dragões, imperadores celestiais e lendas ancestrais que explicam a harmonia entre céu e terra.</p>
-                    <a href="chinesa.html" class="btn">Acessar</a>
+                    <p>Dragões, equilíbrio e sabedoria ancestral.</p>
+                    <a href="quiz_chinesa.php" class="btn">Fazer Quiz</a>
                 </div>
 
-                <!-- Mitologia Japonesa -->
                 <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Amaterasu_Omikami.png" alt="Mitologia Japonesa">
+                    <img src="img/japonesa.jpg" alt="">
                     <h2>Mitologia Japonesa</h2>
-                    <p>Os kami, como Amaterasu, moldaram a cultura japonesa com histórias sagradas.</p>
-                    <a href="japonesa.html" class="btn">Acessar</a>
+                    <p>Amaterasu e os kami sagrados.</p>
+                    <a href="quiz_japonesa.php" class="btn">Fazer Quiz</a>
                 </div>
 
-                <!-- Mitologia Celta -->
-                <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Cernunnos_Celtic_God.jpg" alt="Mitologia Celta">
-                    <h2>Mitologia Celta</h2>
-                    <p>Druidas, deuses da natureza e lendas que influenciaram tradições da Europa antiga.</p>
-                    <a href="celta.html" class="btn">Acessar</a>
-                </div>
             </div>
-            <!-- Botões -->
-            <button class="carousel-btn prev">&#10094;</button>
-            <button class="carousel-btn next">&#10095;</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Viajando pelas Mitologias</p>
+        <p>&copy; <?= date("Y") ?> Viajando pelas Mitologias</p>
     </footer>
 
     <script>
         const track = document.querySelector('.carousel-track');
         const cards = Array.from(track.children);
-        const nextButton = document.querySelector('.carousel-btn.next');
-        const prevButton = document.querySelector('.carousel-btn.prev');
-
         let index = 0;
 
         function updateCarousel() {
-            const cardWidth = cards[0].getBoundingClientRect().width + 30; // largura + margem
-            track.style.transform = 'translateX(' + (-index * cardWidth) + 'px)';
+            const cardWidth = cards[0].getBoundingClientRect().width + 30;
+            track.style.transform = `translateX(${-(index * cardWidth)}px)`;
         }
 
-        nextButton.addEventListener('click', () => {
-            index = (index + 1) % cards.length;
-            updateCarousel();
-        });
-
-        prevButton.addEventListener('click', () => {
-            index = (index - 1 + cards.length) % cards.length;
-            updateCarousel();
-        });
-
-        // Carrossel automático
         setInterval(() => {
             index = (index + 1) % cards.length;
             updateCarousel();
