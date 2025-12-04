@@ -40,10 +40,10 @@ include "conexao.php";
                 [6, "Mitologia Chinesa", "imagens/imgchinesa.png"],
                 [7, "Mitologia Indígena", "imagens/indigena.png"],
                 [8, "Mitologia Africana", "imagens/imgafricana.png"],
-                [9, "Mitologia Mesopotâmica", "imagens/mesopotamica.jpg"],
-                [10, "Mitologia Celta", "imagens/celta.jpg"],
-                [11, "Mitologia Hindu", "imagens/hindu.jpg"],
-                [12, "Mitologia Maia", "imagens/maia.jpg"]
+                [9, "Mitologia Mesopotâmica", "imagens/mesopoamica.png"],
+                [10, "Mitologia Celta", "imagens/celta.png"],
+                [11, "Mitologia Hindu", "imagens/hindu.png"],
+                [12, "Mitologia Maia", "imagens/maia.png"]
             ];
 
             foreach ($mitologias as $m) {
