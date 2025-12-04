@@ -49,12 +49,15 @@ CREATE TABLE Questoes (
 
 -- Criando tabela Rodada (tabela de relacionamento Perguntas x Quiz)
 CREATE TABLE Rodada (
+    idUsuario INT NOT NULL,
     idQuestoes INT NOT NULL,
     idTipoMitologia INT NOT NULL,
-    PRIMARY KEY (idQuestoes, idTipoMitologia),
+    PRIMARY KEY (idUsuario, idQuestoes, idTipoMitologia),
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
     FOREIGN KEY (idQuestoes) REFERENCES Questoes(idQuestoes),
     FOREIGN KEY (idTipoMitologia) REFERENCES TipoMitologia(idTipoMitologia)
 );
+
 
 -- Criando tabela Placar
 -- CREATE TABLE Placar (
