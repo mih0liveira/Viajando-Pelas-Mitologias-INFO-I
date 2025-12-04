@@ -7,6 +7,8 @@ if (!isset($_SESSION["idUsuario"])) {
     exit;
 }
 
+
+
 // VERIFICA SE É ADMIN
 if ($_SESSION["idTipoUsuario"] != 1) {
     die("Acesso negado! Apenas administradores podem cadastrar questões.");
@@ -14,6 +16,8 @@ if ($_SESSION["idTipoUsuario"] != 1) {
 
 // Conexão
 $conn = new mysqli("localhost", "root", "", "viajandopelasmitologias");
+$conn->set_charset("utf8mb4");
+
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }

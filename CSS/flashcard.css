@@ -13,19 +13,28 @@ body {
     text-align: center;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 .navbar {
     background-color: #001f54;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px 40px;
-    height: auto;
-    flex-wrap: wrap;
+    justify-content: center;  /* centraliza o menu */
+    padding: 10px 40px;
+    position: relative;
+    height: 120px;
+}
+
+/* Logo fixa à esquerda */
+.logo {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .logo img {
-    height: 90px;
+    height: 110px;
     transition: transform 0.3s;
 }
 

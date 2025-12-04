@@ -6,6 +6,7 @@ if (!isset($_SESSION["idUsuario"]) || $_SESSION["idTipoUsuario"] != 1) {
 }
 
 $conn = new mysqli("localhost", "root", "", "viajandopelasmitologias");
+$conn->set_charset("utf8mb4");
 
 $id    = $_POST["idUsuario"];
 $nome  = $_POST["nome"];
