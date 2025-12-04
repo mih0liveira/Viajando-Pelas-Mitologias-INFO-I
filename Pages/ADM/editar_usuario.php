@@ -19,6 +19,7 @@ $usuario = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuário</title>
+    <link rel="icon" type="image/png" href="../../Img/favicon.ico">
     <link rel="stylesheet" href="../../CSS/salvar_questoes.css">
 </head>
 <body>

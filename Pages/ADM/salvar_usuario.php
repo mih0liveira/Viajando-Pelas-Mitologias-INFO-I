@@ -21,6 +21,13 @@ $sql = "INSERT INTO Usuario (nome, email, senha, idTipoUsuario) VALUES (?, ?, ?,
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssi", $nome, $email, $senha, $idTipoUsuario);
 
+if ($conn->query($sql)) {
+    header("Location: listar_usuarios.php");
+    exit;
+} else {
+    echo "Erro ao cadastrar: " . $conn->error;
+}
+
 if ($stmt->execute()) {
     echo "<script>alert('Usuário cadastrado com sucesso!'); window.location='listar_usuarios.php';</script>";
 } else {

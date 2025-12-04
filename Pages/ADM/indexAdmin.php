@@ -16,6 +16,7 @@ $isAdmin = ($_SESSION["idTipoUsuario"] == 1);
 <head>
 <meta charset="UTF-8">
 <title>Index do Administrador</title>
+<link rel="icon" type="image/png" href="../../Img/favicon.ico">
 <link rel="stylesheet" href="quiz.css"> <!-- usa o CSS padrão que você mandou -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');

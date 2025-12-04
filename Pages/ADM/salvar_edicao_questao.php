@@ -22,6 +22,13 @@ switch ($corretaLetra) {
     case "D": $correta = $altD; break;
 }
 
+if ($conn->query($sql)) {
+    header("Location: listar_questoes.php");
+    exit;
+} else {
+    echo "Erro ao cadastrar: " . $conn->error;
+}
+
 // Upload de imagem (opcional)
 $imagemNome = null;
 

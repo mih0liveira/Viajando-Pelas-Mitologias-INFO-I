@@ -11,12 +11,15 @@ if (!isset($_SESSION["idUsuario"])) {
 if ($_SESSION["idTipoUsuario"] != 1) {
     die("Acesso negado! Apenas administradores podem cadastrar usuários.");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Usuário</title>
+    <link rel="icon" type="image/png" href="../../Img/favicon.ico">
     <link rel="stylesheet" href="../../CSS/salvar_questoes.css">
 </head>
 <body>

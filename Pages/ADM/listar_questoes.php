@@ -14,6 +14,7 @@ $result = $conn->query("SELECT * FROM Questoes ORDER BY idQuestoes ASC");
 <head>
     <meta charset="UTF-8">
     <title>Lista de Questões</title>
+    <link rel="icon" type="image/png" href="../../Img/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../CSS/salvar_questoes.css">
 </head>
@@ -41,7 +42,7 @@ $result = $conn->query("SELECT * FROM Questoes ORDER BY idQuestoes ASC");
 <div class="container">
 <h2>Lista de Questões</h2>
 
-<button onclick="window.location.href='cadastro_usuario.php'" class="btn btn-primary">
+<button onclick="window.location.href='cadastro_questoes.php'" class="btn btn-primary">
     Cadastrar Nova Questão
 </button>
 

@@ -13,6 +13,8 @@ if (!$isAdmin) {
     die("Acesso negado! Esta página é somente para administradores.");
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +24,7 @@ if (!$isAdmin) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/salvar_questoes.css">
     <title>Cadastrar Questão</title>
+    <link rel="icon" type="image/png" href="../../Img/favicon.ico">
 
     <script>
         function validar() {

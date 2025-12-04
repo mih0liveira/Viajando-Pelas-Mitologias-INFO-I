@@ -1,28 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastrar Questão</title>
-    <link rel="stylesheet" href="../CSS/salvar_questoes.css">
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="logo">
-            <img src="../Img/Logo.png" alt="Logo do site">
-        </div>
-
-        <nav class="menu">
-            <a href="indexAdmin.php">Home</a>
-            <span>|</span>
-            <a href="../Pages/mitologia.html">Mitologias</a>
-            <span>|</span>
-            <a href="testar_conhecimento.php">Testar Conhecimento</a>
-            <span>|</span>
-            <a href="sobre.html">Sobre</a>
-        </nav>
-    </header> -->
-
 <?php
 session_start();
 
@@ -37,24 +12,24 @@ if ($_SESSION["idTipoUsuario"] != 1) {
     die("Acesso negado! Apenas administradores podem cadastrar questões.");
 }
 
+// Conexão
 $conn = new mysqli("localhost", "root", "", "viajandopelasmitologias");
-
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
+$conn->set_charset("utf8mb4");
 
-// RECEBE DADOS DO FORMULÁRIO
-$enunciado  = $_POST["enunciado"];
-$pergunta   = $_POST["pergunta"];
-$altA       = $_POST["alternativaA"];
-$altB       = $_POST["alternativaB"];
-$altC       = $_POST["alternativaC"];
-$altD       = $_POST["alternativaD"];
-$correta    = $_POST["correta"];
-$idTipoMitologia = intval($_POST["idTipoMitologia"]);
+// RECEBE DADOS DO FORMULÁRIO (faça validações adicionais se desejar)
+$enunciado  = isset($_POST["enunciado"]) ? $_POST["enunciado"] : "";
+$pergunta   = isset($_POST["pergunta"]) ? $_POST["pergunta"] : "";
+$altA       = isset($_POST["alternativaA"]) ? $_POST["alternativaA"] : "";
+$altB       = isset($_POST["alternativaB"]) ? $_POST["alternativaB"] : "";
+$altC       = isset($_POST["alternativaC"]) ? $_POST["alternativaC"] : "";
+$altD       = isset($_POST["alternativaD"]) ? $_POST["alternativaD"] : "";
+$corretaLetra = isset($_POST["correta"]) ? $_POST["correta"] : "";
+$idTipoMitologia = isset($_POST["idTipoMitologia"]) ? intval($_POST["idTipoMitologia"]) : 0;
 
-
-$corretaLetra = $_POST['correta'];
+// Definir $correta (texto da alternativa correta) baseado na letra
 switch ($corretaLetra) {
     case "A": $correta = $altA; break;
     case "B": $correta = $altB; break;
@@ -65,23 +40,24 @@ switch ($corretaLetra) {
 
 // PROCESSA IMAGEM (opcional)
 $imagemNome = null;
-$uploadDir = "../Uploads/";
+$uploadDir = __DIR__ . "/../Uploads/"; // caminho absoluto baseado no arquivo atual
 
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0777, true);
 }
 
-if (isset($_FILES["imagem"]) && $_FILES["imagem"]["error"] == 0) {
+if (isset($_FILES["imagem"]) && $_FILES["imagem"]["error"] === UPLOAD_ERR_OK) {
     $ext = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
     $novoNome = uniqid("img_") . "." . $ext;
-
     if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadDir . $novoNome)) {
         $imagemNome = $novoNome;
+    } else {
+        // opcional: tratar erro de upload
+        // $imagemNome = null;
     }
 }
 
-
-// SQL PARA SALVAR NO BANCO
+// PREPARE + BIND + EXECUTE corretamente
 $sql = "INSERT INTO Questoes (
             enunciado, pergunta, imagem, 
             alternativaA, alternativaB, alternativaC, alternativaD, 
@@ -90,7 +66,14 @@ $sql = "INSERT INTO Questoes (
 
 $stmt = $conn->prepare($sql);
 
-$stmt->bind_param("ssssssssi",
+if (!$stmt) {
+    // erro no prepare
+    die("Erro ao preparar declaração: " . $conn->error);
+}
+
+// tipos: s=string, i=int -> temos 8 strings e 1 int
+if (!$stmt->bind_param(
+    "ssssssssi",
     $enunciado,
     $pergunta,
     $imagemNome,
@@ -100,20 +83,18 @@ $stmt->bind_param("ssssssssi",
     $altD,
     $correta,
     $idTipoMitologia
-);
-
-// FINALIZA
-if ($stmt->execute()) {
-    echo "<script>alert('Questão cadastrada com sucesso!'); window.location='cadastro_questoes.php';</script>";
-} else {
-    echo "<script>alert('Erro ao cadastrar a questão!'); window.history.back();</script>";
+)) {
+    die("Erro ao vincular parâmetros: " . $stmt->error);
 }
 
-?>
-</body>
-</html>
-
-
-
-
+if ($stmt->execute()) {
+    // Sucesso: redireciona para a listagem
+    echo "<script>alert('Questão cadastrada com sucesso!'); window.location='listar_questoes.php';</script>";
+    exit;
+} else {
+    // Erro na execução
+    $erro = $stmt->error;
+    echo "<script>alert('Erro ao cadastrar a questão!'); window.history.back();</script>";
+    exit;
+}
 

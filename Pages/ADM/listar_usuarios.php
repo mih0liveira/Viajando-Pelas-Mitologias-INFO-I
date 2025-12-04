@@ -15,6 +15,7 @@ $result = $conn->query("SELECT * FROM Usuario ORDER BY idUsuario ASC");
 <head>
     <meta charset="UTF-8">
     <title>Usuários Cadastrados</title>
+    <link rel="icon" type="image/png" href="../../Img/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../CSS/salvar_questoes.css">
 </head>

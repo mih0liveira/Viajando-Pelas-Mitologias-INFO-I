@@ -17,6 +17,13 @@ $sql = "UPDATE Usuario SET nome=?, email=?, idTipoUsuario=? WHERE idUsuario=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssii", $nome, $email, $tipo, $id);
 
+if ($conn->query($sql)) {
+    header("Location: listar_usuarios.php");
+    exit;
+} else {
+    echo "Erro ao cadastrar: " . $conn->error;
+}
+
 if ($stmt->execute()) {
     echo "<script>alert('Usuário atualizado!'); window.location='listar_usuarios.php';</script>";
 } else {
