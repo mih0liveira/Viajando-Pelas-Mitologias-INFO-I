@@ -32,14 +32,15 @@ $result = $conn->query($sql);
         <div class="logo">
             <img src="../Img/Logo.png" alt="Logo do site">
         </div>
+
         <nav class="menu">
             <a href="../Pages/index.html">Home</a>
             <span>|</span>
             <a href="../Pages/mitologia.html">Mitologias</a>
             <span>|</span>
-            <a href="#">Testar Conhecimento</a>
+            <a href="testar_conhecimento.php">Testar Conhecimento</a>
             <span>|</span>
-            <a href="#">Sobre</a>
+            <a href="sobre.html">Sobre</a>
         </nav>
     </header>
   <div class="grid">

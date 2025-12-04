@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cinzel Decorative", serif;
+    background-color: #f8f1df;
+    color: #001f54;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    width: 60%;
+    background: #fff;
+    padding: 25px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    text-align: center;
+}
+
+/* Centralização e responsividade da tabela */
+.table {
+    text-align: center;
+    width: 100%;
+    overflow-x: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+input[type="file"] {
+    padding: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #0066cc;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0052a3;
+}
+
+/* Mensagens */
+.success, .error {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.success {
+    background: #c0ffc4;
+    border: 1px solid #2e8b57;
+    color: #1a5f3a;
+}
+
+.error {
+    background: #ffb6b6;
+    border: 1px solid #cc0000;
+    color: #7a0000;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background-color: #001f54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 40px;
+    position: relative;
+    height: 120px;
+}
+
+.logo {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo img {
+    height: 110px;
+    transition: transform 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    white-space: nowrap;
+}
+
+.menu span {
+    color: white;
+    font-size: 32px;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+/* Tablets e telas menores */
+@media (max-width: 992px) {
+    .container {
+        width: 80%;
+    }
+    .menu {
+        gap: 25px;
+    }
+    .menu a {
+        font-size: 24px;
+    }
+    .navbar {
+        height: 100px;
+    }
+    .logo img {
+        height: 90px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+
+    /* Coloca menu abaixo da logo */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .logo {
+        position: relative;
+        left: 0;
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        height: 80px;
+    }
+
+    .menu {
+        position: relative;
+        left: 0;
+        transform: none;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .menu a {
+        font-size: 22px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Celulares muito pequenos */
+@media (max-width: 480px) {
+    .menu a {
+        font-size: 18px;
+    }
+
+    .logo img {
+        height: 70px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, textarea, select {
+        font-size: 14px;
+    }
+}

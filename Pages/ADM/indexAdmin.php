@@ -15,7 +15,7 @@ $isAdmin = ($_SESSION["idTipoUsuario"] == 1);
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Testar Conhecimento</title>
+<title>Index do Administrador</title>
 <link rel="stylesheet" href="quiz.css"> <!-- usa o CSS padrão que você mandou -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
@@ -33,7 +33,6 @@ body {
     justify-content: center;
     text-align: center;
 }
-
 
 
 
@@ -101,7 +100,7 @@ body {
     display: flex;
     flex-direction: column;  /* os itens ficam em coluna */
     justify-content: space-between; /* empurra o botão para baixo */
-    height: 310px;
+    height: 200px;
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
@@ -137,34 +136,41 @@ body {
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">
-            <img src="../Img/Logo.png" alt="Logo do site">
-        </div>
+    <div class="logo">
+        <img src="../../Img/Logo.png" alt="Logo do site">
+    </div>
 
-        <nav class="menu">
-            <a href="../Pages/index.html">Home</a>
-            <span>|</span>
-            <a href="../Pages/mitologia.html">Mitologias</a>
-            <span>|</span>
-            <a href="testar_conhecimento.php">Testar Conhecimento</a>
-            <span>|</span>
-            <a href="sobre.html">Sobre</a>
-        </nav>
-    </header>
+    <nav class="menu">
+        <a href="indexAdmin.php">Home</a>
+        <span>|</span>
+        <a href="cadastro_questoes.php">Cadastrar Questões</a>
+        <span>|</span>
+        <a href="cadastro_usuario.php">Cadastrar Usuários</a>
+        <span>|</span>
+        <a href="../logout.php">Sair</a>
+    </nav>
+</header>
+
 
     <div class="container">
         <br>
-        <h1>Escolha como deseja testar seu conhecimento</h1>
+        <h1>Olá ADM! O que deseja fazer?</h1>
         <div class="opcoes">
             <div class="opcao">
-                <h2>Quiz</h2>
-                <p>Responda perguntas e descubra seu nível de conhecimento!</p>
-                <button onclick="window.location.href='escolher_quiz.html'">Escolher Mitologia</button>
+                <h2>Cadastrar Questões</h2>
+                <button onclick="window.location.href='cadastro_questoes.php'">Vamos lá!</button>
             </div>
             <div class="opcao">
-                <h2>Flashcards</h2>
-                <p>Revise conceitos e aprenda de forma divertida!</p>
-                <button onclick="window.location.href='escolher_flashcard.html'">Escolher Mitologia</button>
+                <h2>Cadastrar Usuário</h2>
+                <button onclick="window.location.href='cadastro_usuario.php'">Vamos lá!</button>
+            </div>
+            <div class="opcao">
+                <h2>Visualizar Questões</h2>
+                <button onclick="window.location.href='listar_questoes.php'">Vamos lá!</button>
+            </div>
+            <div class="opcao">
+                <h2>Visualizar Usuários</h2>
+                <button onclick="window.location.href='listar_usuarios.php'">Vamos lá!</button>
             </div>
         </div>
     </div>
