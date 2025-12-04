@@ -6,6 +6,7 @@ if (!isset($_SESSION["idUsuario"]) || $_SESSION["idTipoUsuario"] != 1) {
 }
 
 $conn = new mysqli("localhost", "root", "", "viajandopelasmitologias");
+$conn->set_charset("utf8mb4");
 
 $id = intval($_GET["id"]);
 $result = $conn->query("SELECT * FROM Usuario WHERE idUsuario = $id");

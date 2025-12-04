@@ -5,6 +5,7 @@ if (!isset($_SESSION["idUsuario"]) || $_SESSION["idTipoUsuario"] != 1) {
 }
 
 $conn = new mysqli("localhost", "root", "", "viajandopelasmitologias");
+$conn->set_charset("utf8mb4");
 
 $result = $conn->query("SELECT * FROM Questoes ORDER BY idQuestoes ASC");
 ?>
@@ -40,7 +41,10 @@ $result = $conn->query("SELECT * FROM Questoes ORDER BY idQuestoes ASC");
 <div class="container">
 <h2>Lista de Questões</h2>
 
-<button href="cadastro_questoes.php">Cadastrar Nova Questão</button>
+<button onclick="window.location.href='cadastro_usuario.php'" class="btn btn-primary">
+    Cadastrar Nova Questão
+</button>
+
 <br><br>
 
 <table border="1" cellpadding="10">
