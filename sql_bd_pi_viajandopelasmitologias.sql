@@ -49,7 +49,7 @@ CREATE TABLE Questoes (
 
 -- Criando tabela Rodada (tabela de relacionamento Perguntas x Quiz)
 CREATE TABLE Rodada (
-    idUsuario INT NOT NULL,
+    idUsuario INT,
     idQuestoes INT NOT NULL,
     idTipoMitologia INT NOT NULL,
     PRIMARY KEY (idUsuario, idQuestoes, idTipoMitologia),
