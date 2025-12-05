@@ -70,12 +70,12 @@ if (isset($_POST["login"])) {
 
             // SE FOR ADMIN (idTipoUsuario = 1)
             if ($usuario["idTipoUsuario"] == 1) {
-                header("Location: ../Pages/cadastro_questoes.php");
+                header("Location: ../Pages/ADM/indexAdmin.php");
                 exit;
             }
 
             // Usuário comum
-            header("Location: ../Pages/mitologia.html");
+            header("Location: ../Pages/index.html");
             exit;
 
         } else {
@@ -99,20 +99,6 @@ if (isset($_POST["login"])) {
     <link rel="stylesheet" type="text/css" href="../CSS/login.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-            <img src="../Img/Logo.png" alt="Logo do site">
-        </div>
-        <nav class="menu">
-            <a href="../Pages/index.html">Home</a>
-            <span>|</span>
-            <a href="login.php">Mitologias</a>
-            <span>|</span>
-            <a href="flashcard.php">Testar Conhecimento</a>
-            <span>|</span>
-            <a href="login.php">Sobre</a>
-        </nav>
-    </header>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">

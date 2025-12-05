@@ -9,39 +9,44 @@ body {
     font-family: "Cinzel Decorative", serif;
     background-color: #f8f1df;
     color: #001f54;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
 }
 
 .navbar {
     background-color: #001f54;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;  /* centraliza o menu */
     padding: 10px 40px;
     position: relative;
     height: 120px;
 }
 
-.menu {
+/* Logo fixa à esquerda */
+.logo {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%); /* truque para centralizar */
-    display: flex;
-    gap: 100px;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .logo img {
-    height: 100px;
-    margin: -15px;
+    height: 110px;
     transition: transform 0.3s;
 }
+
 .logo img:hover {
-    transform: scale(1.05); /* aumenta 5% ao passar o mouse */
+    transform: scale(1.05);
 }
 
-
+/* MENU CENTRALIZADO */
+.menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
 
 .menu a {
     color: white;
@@ -50,36 +55,50 @@ body {
     white-space: nowrap;
 }
 
-.menu a:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
-}
-
 .menu span {
     color: white;
-    font-size: 40px;
-    margin-top: -10px;
+    font-size: 32px;
 }
-
-
 /* Conteúdo */
 .container {
     text-align: center;
     padding: 40px;
 }
 
+.container h1 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    text-transform: uppercase;
+}
 
 /* Cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    flex-wrap: wrap;
+}
 
 .card {
     text-align: center;
-    align-items: center;
-    width: 400px;
-    font-family: Arial, Helvetica, sans-serif;
+    max-width: 250px;
 }
 
-.card h3 {
-    font-family: "Cinzel Decorative", serif;
+.card p {
+    font-size: 30px;
+    margin-left: -30px;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    
+
+}
+
+.card img {
+    width: 250px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
 }
 
 .card img:hover {
@@ -101,3 +120,4 @@ body {
     background-color: #0044aa;
     transform: scale(1.1);
 }
+

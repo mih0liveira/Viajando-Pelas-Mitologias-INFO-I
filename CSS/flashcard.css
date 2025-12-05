@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap'); 
 
 * {
     margin: 0;
@@ -10,6 +10,7 @@ body {
     font-family: "Cinzel Decorative", serif;
     background-color: #f8f1df;
     color: #001f54;
+    text-align: center;
 }
 
 /* ================= NAVBAR ================= */
@@ -18,12 +19,13 @@ body {
     background-color: #001f54;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;  /* centraliza o menu */
     padding: 10px 40px;
     position: relative;
     height: 120px;
 }
 
+/* Logo fixa à esquerda */
 .logo {
     position: absolute;
     left: 40px;
@@ -40,74 +42,108 @@ body {
     transform: scale(1.05);
 }
 
+/* MENU CENTRALIZADO */
 .menu {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 50px;
     align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
 }
 
 .menu a {
     color: white;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 28px;
     white-space: nowrap;
+    transition: transform 0.3s ease;
+}
+
+.menu a:hover {
+    transform: scale(1.05);
 }
 
 .menu span {
     color: white;
-    font-size: 32px;
+    font-size: 40px;
 }
-       
 
-        .container {
-            max-width: 1100px; /* mais largo */
-            margin: 50px auto;
-            padding: 60px 50px;
-            background-color: #fff; /* card limpo e elegante */
-            border: 4px solid #ffffff; /* mesma cor de antes */
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.3);
-            text-align: justify;
-            line-height: 1.9;
-            font-size: 20px;
-            animation: fadeIn 1.5s ease;
-        }
+/* CONTEÚDO */
+.container {
+    padding: 40px;
+}
 
-        h1, h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #001f54;
-        }
+/* GRID DE FLASHCARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* sempre 2 colunas */
+    gap: 50px;
+    width: 95%;
+    max-width: 800px;
+    margin: 30px auto;
+}
 
-        h1 {
-            font-size: 32px;
-        }
+/* FLASHCARD */
+.flashcard {
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    margin: auto;
+    overflow-wrap: break-word;
+    overflow: hidden;
 
-        h2 {
-            font-size: 24px;
-            margin-top: 40px;
-        }
 
-        p {
-            margin-bottom: 20px;
-        }
+}
 
-        footer {
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flashcard.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 17px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-front {
+    background: #43589c;
+    color: white;
+}
+
+.card-back {
+    background: #fff;
+    color: #333;
+    transform: rotateY(180deg);
+    border: 2px solid #43589c;
+}
+footer {
             background-color: #001f54;
             color: white;
             text-align: center;
             padding: 15px;
             margin-top: 40px;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* ===== RESPONSIVIDADE ===== */
 
 /* ==================== RESPONSIVIDADE ==================== */
 
@@ -175,19 +211,6 @@ body {
     .menu a {
         font-size: 18px;
     }
-
-    .container {
-        padding: 30px 20px;
-        font-size: 18px;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
 }
 
 /* Telas bem pequenas (celulares antigos / mini telas) */
@@ -201,42 +224,3 @@ body {
         height: 60px;
     }
 }
-/* Ajuste do container para telas médias */
-@media (max-width: 1024px) {
-    .container {
-        max-width: 90%;
-        padding: 40px 30px;
-        font-size: 19px;
-        line-height: 1.8;
-    }
-}
-
-/* Ajuste do container para telas pequenas */
-@media (max-width: 600px) {
-    .container {
-        max-width: 95%;
-        width: 100%;
-        padding: 30px 20px;
-        font-size: 18px;
-        line-height: 1.7;
-    }
-}
-
-/* Ajuste do container para telas muito pequenas */
-@media (max-width: 400px) {
-    .container {
-        max-width: 98%;
-        padding: 25px 15px;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-}
-
-
-
-
-
-        
-
-
-    
